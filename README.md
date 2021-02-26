@@ -1,6 +1,8 @@
 # HDRUK Spring Project: CRUK (CNN gene expression data)
 
-**There are **
+**The paths in the code files refer to the development on the turing DSG system,
+you will need to amend them in each case.**
+
 ## Pre-processing
 
 The initial step required to run the CNN is to normalise and filter date.
