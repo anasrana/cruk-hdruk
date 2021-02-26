@@ -1,0 +1,27 @@
+%%writefile '/shared/editter/Make_log2FC_data.py'
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import os
+
+#import data from Tony's prenormalised stuff
+
+data_dir = '/shared/DE_DESeq/'
+
+#files = os.listdir('/shared/DE_DESeq/')
+files = [filename for filename in os.listdir(data_dir) if filename.startswith("CTRL")]
+
+#All code here, change .drop line to select other data if thats what you want
+df_log2FC = pd.DataFrame()
+for i in range(0, len(files)):
+    df = pd.read_csv(data_dir + files[i], index_col=0)
+    df2 = df.drop(["baseMean", "stat", "pvalue", "padj", "lfcSE"], axis=1)
+    df2 = df2.rename(columns={"log2FoldChange":files[i][8:-18]})
+    df2 = df2.transpose()
+    df_log2FC = pd.concat([df_log2FC, df2])
+    
+
+    
+## Makes data frame where rows are KNOCKOUT genes, columns are measured genes. Data is the log2FoldChange vr CTRL
+df_log2FC.to_csv('/shared/editter/log2FoldChangeData.csv')

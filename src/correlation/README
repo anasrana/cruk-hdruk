@@ -1,0 +1,32 @@
+Data Prep
+---
+
+To make initial log2FC data, run Make_log2FC_data.ipyn
+
+Differential Expression Network
+---
+
+Data stored in /output/log2FoldChangeData.csv, run DE_network.ipynb to generate networks,
+alternatively functions stored in FunctionRepo_v1.py
+
+Correlation Network
+---
+
+- Generate correlations
+    - `corr_20.py` pearson correlation for 19 KO genes
+    - `corr_pearson.py` pearson correlation for 1397 filtered genes
+    - `corr_spearman.py` spearman correlation for 1397 filtered genes
+    - `corr_pearson_cnn.py` pearson correlation for 1300 genes for CNN group (Jessica Dafflon)
+    - `corr_pearson_cnn.py` pearson correlation for 1300 genes + all KO genes for CNN group (Jessica Dafflon)
+- construct networks and calculate centrality
+    - `calc_network_centrality.py` construct network and calculate centrality
+- plotting
+    - `plot_corr_coeff_histogram.py` plot histograms for correlation coefficients
+    - `plot_pearson_network.py` plot pearson networks
+    - `plot_spearman_concentric_network.py` plot spearman concentric networks
+
+Nested Effect Model
+---
+
+Data stored in /output/log2FoldChangeData.csv, run nested_effect.py to generate all graphs,
+output of full F matrix already stored in /output/F.csv, example plots in /output/plots
